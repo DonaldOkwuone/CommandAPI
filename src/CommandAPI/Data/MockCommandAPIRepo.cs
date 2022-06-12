@@ -5,7 +5,11 @@ using CommandAPI.Models;
 
 namespace CommandAPI.Data{
     public class MockCommandAPIRepo : ICommandAPIRepo{
-
+        private readonly CommandDBContext _dbcontext;
+        public MockCommandAPIRepo(CommandDBContext commandDBContext)
+        {
+            _dbcontext = commandDBContext;
+        }
         public bool SaveChanges(){
             throw new System.NotImplementedException();
         }
