@@ -1,7 +1,9 @@
 using CommandAPI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Npgsql;   
+using Npgsql;  
+using AutoMapper;
+
 //using NLog;
 //using NLog.Web;
 
@@ -29,6 +31,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo >();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 /*builder.Services.AddSwaggerGen();*/
 
 //building in security

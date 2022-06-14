@@ -15,7 +15,7 @@ namespace CommandAPI.Data{
             _configuration = configuration;
         }
          public bool SaveChanges(){
-            throw new System.NotImplementedException();
+           return  (_context.SaveChanges()>0);
         }
         public IEnumerable<Command> GetAllCommands(){
 
@@ -30,6 +30,10 @@ namespace CommandAPI.Data{
             return command;
         }
         public void CreateCommand(Command cmd){
+            if(cmd ==null){
+                throw new ArgumentNullException(nameof(cmd));
+            }
+            _context.Add(cmd);
 
         }
         public void UpdateCommand(Command cmd){
