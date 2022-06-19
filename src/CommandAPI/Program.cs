@@ -47,6 +47,15 @@ builder.Services.AddDbContext<CommandDBContext>(options =>
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
+
+var optionsBuilder = new DbContextOptionsBuilder<CommandDBContext>();
+    optionsBuilder.UseNpgsql(ConnectionBuilder.ConnectionString);
+
+var context  = new CommandDBContext(optionsBuilder.Options);
+context.Database.Migrate();
+
+//var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
 if (app.Environment.IsDevelopment())
 {
     //app.UseSwagger();
